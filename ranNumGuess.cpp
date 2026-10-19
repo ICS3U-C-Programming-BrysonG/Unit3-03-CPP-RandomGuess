@@ -11,9 +11,30 @@
 
 int main() {
     int someRandomNumber;
+    int guessedNumber;
+
+    // Generate random number
+
     std::random_device rseed;
-    std::mt19937 rgen(rseed()); //mersenne_twister
-    std::uniform_int_distribution<int> idist(1, 100); // [1,100]
+    // mersenne_twister
+
+    std::mt19937 rgen(rseed());
+    std::uniform_int_distribution<int> idist(1, 100);  // [1,100]
     someRandomNumber = idist(rgen);
-    std::cout << someRandomNumber << std::endl;
+
+    // Get guessed number from the user
+
+    std::cout << "Enter your guessed number (1 - 100): ";
+    std::cin >> guessedNumber;
+
+
+    // Check if the user is correct or not
+
+    if (guessedNumber == someRandomNumber) {
+        std::cout << "You guessed correct!";
+    }
+    if (guessedNumber != someRandomNumber) {
+        std::cout << "You guessed wrong!";
+        std::cout << "The correct answer was " << someRandomNumber;
+    }
 }
